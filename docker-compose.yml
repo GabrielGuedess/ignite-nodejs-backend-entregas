@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  prisma_deliveries:
+    image: postgres:latest
+    container_name: prisma_deliveries
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=prisma_deliveries
+    volumes:
+      - pgdata:/data/postgres
+
+  app:
+    build: .
+    container_name: backend-de-entregas
+    ports:
+      - 3333:3333
+    volumes:
+      - .:/usr/app
+    depends_on:
+      - prisma_deliveries
+
+
+volumes:
+  pgdata:
+    driver: local
+
