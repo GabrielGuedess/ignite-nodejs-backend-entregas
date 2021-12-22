@@ -61,5 +61,10 @@
         "devDependencies": ["**/*.spec.js", "**/*.spec.ts", "./jest.config.ts"]
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
   }
 }
